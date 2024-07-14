@@ -15,15 +15,15 @@ end
 
 column.border = function()
   if vim.v.relnum == 2 then
-    return "%#ColumnTertiary#│"
+    return "%#ColumnTertiary#│ "
   end
   if vim.v.relnum == 1 then
-    return "%#ColumnSecondary#│"
+    return "%#ColumnSecondary#│ "
   end
   if vim.v.relnum == 0 then
-    return "%#ColumnCurrent#│"
+    return "%#ColumnCurrent#│ "
   end
-  return "%#ColumnDim#│"
+  return "%#ColumnDim#│ "
 end
 
 column.bootstrap = function()
