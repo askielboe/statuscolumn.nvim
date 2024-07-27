@@ -26,10 +26,27 @@ column.border = function()
   return "%#ColumnDim#│ "
 end
 
+column.mark = function()
+  local marks = vim.fn.getmarklist(".") -- Get marks for the current buffer
+  local mark_str = ""
+
+  for _, mark in ipairs(marks) do
+    if mark.mark:match("^[a-zA-Z]$") then -- Filter out only letter marks
+      mark_str = mark_str .. mark.mark .. " "
+    end
+  end
+
+  return mark_str
+end
+
 column.bootstrap = function()
   local result = ""
 
-  result = column.linenumber() .. " " .. column.border()
+  result = column.mark() .. " " .. column.linenumber() .. " " .. column.border()
+
+  -- Include marks in the statusline
+  local marks = vim.fn.getmarklist(".")
+
   return "%s%=" .. result
 end
 
