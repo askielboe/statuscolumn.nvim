@@ -20,7 +20,7 @@ function statuscolumn.setup(options)
     callback = function(ev)
       local bufnr = ev.buf
       if vim.bo[bufnr].buftype == "" and vim.bo[bufnr].filetype ~= "" then
-        vim.opt_local.relativenumber = true
+        vim.opt_local.relativenumber = false
         vim.opt_local.statuscolumn = "%!v:lua.require('statuscolumn').init()"
       else
         vim.opt_local.statuscolumn = ""
